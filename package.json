@@ -1,0 +1,14 @@
+{
+  "name": "temperature-monitor",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Simple home temperature monitor demo",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "mysql": "^2.16.0",
+    "request": "^2.88.0"
+  }
+}

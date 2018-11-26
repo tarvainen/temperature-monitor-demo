@@ -1,0 +1,39 @@
+version: '3.5'
+
+services:
+  scraper:
+    image: node:latest
+    entrypoint: node index.js
+    volumes:
+      - ./:/var/app
+    working_dir: /var/app
+    environment:
+      MYSQL_HOST: mariadb
+      MYSQL_PASS: changethistoverysecurepass
+      MYSQL_USER: root
+      MYSQL_DB: records
+      SENSOR_URL: http://your-local-sensor.local
+
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: changethistomoresecurepass
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana:/var/lib/grafana
+
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: changethistoverysecurepass
+      MYSQL_DATABASE: records
+    ports:
+      - 3306:3306
+    volumes:
+      - mariadb:/var/lib/mysql
+
+volumes:
+  grafana:
+  mariadb:
