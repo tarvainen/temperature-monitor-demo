@@ -2,11 +2,7 @@ version: '3.5'
 
 services:
   scraper:
-    image: node:latest
-    entrypoint: node index.js
-    volumes:
-      - ./:/var/app
-    working_dir: /var/app
+    image: tarvainen/temperature-monitor-demo:latest
     environment:
       MYSQL_HOST: mariadb
       MYSQL_PASS: changethistoverysecurepass
